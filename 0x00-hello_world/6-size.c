@@ -3,17 +3,17 @@
 /**
  * main - Entry point of the program.
  *
- * Description: A C program that prints the size of various data types using sizeof() function.
+ * Description: A C program that prints the size of various data types on computer using sizeof() function.
  *
  * Return: 0 if program successed.
 */
 
 int main(void)
 {
-	printf("Size of a char: %u byte(s)\n", sizof(char));
-	printf("Size of a char: %u byte(s)\n", sizof(int));
-	printf("Size of a char: %u byte(s)\n", sizof(long int));
-	printf("Size of a char: %u byte(s)\n", sizof(long long int));
-	printf("Size of a char: %u byte(s)\n", sizof(float));
+	printf("Size of a char: %u byte(s)\n", sizeof(char));
+	printf("Size of a int: %u byte(s)\n", sizeof(int));
+	printf("Size of a long int: %u byte(s)\n", sizeof(long int));
+	printf("Size of a long long int: %u byte(s)\n", sizeof(long long int));
+	printf("Size of a float: %u byte(s)\n", sizeof(float));
 	return (0);
 }
