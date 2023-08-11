@@ -14,11 +14,17 @@ int main(void)
 	char ch = 'a';
 	char upper_ch = 'A';
 
-	for (ch = 'a'; ch <= 'z'; ch++)
+	while (ch <= 'z')
+	{
 		putchar(ch);
+		ch++;
+	}
 
-	for (upper_ch = 'A'; upper_ch <= 'Z'; upper_ch++)
+	while (upper_ch <= 'Z')
+	{
 		putchar(upper_ch);
+		upper_ch++;
+	}
 
 	putchar('\n');
 
