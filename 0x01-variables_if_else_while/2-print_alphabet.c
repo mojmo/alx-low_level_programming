@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Entry point of program.
  *
@@ -7,7 +8,7 @@
  * Return: 0 if successed.
 */
 
-int main()
+int main(void)
 {
 
 	char ch = 'a';
