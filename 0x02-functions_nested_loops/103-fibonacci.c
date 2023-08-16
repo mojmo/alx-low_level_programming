@@ -12,8 +12,7 @@
 
 int main(void)
 {
-	unsigned long prevNum = 0, currNum = 1, nextNum = 0;
-	int sum = 0;
+	unsigned long prevNum = 0, currNum = 1, nextNum = 0, sum = 0;
 
 	while (1)
 	{
