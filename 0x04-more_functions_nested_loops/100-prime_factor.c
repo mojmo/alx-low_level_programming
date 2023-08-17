@@ -1,6 +1,28 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdlib.h>
+
+/**
+ * sqroot - find the square root of a number.
+ *
+ * @num: The number to find its square root.
+ *
+ * Retrun: Square root of @num.
+ */
+
+double sqroot(double num)
+{
+	double temp = 0;
+	double sqr = num / 2;
+
+	while (sqr != temp)
+	{
+		temp = sqr;
+		sqr = (num / temp + temp) / 2;
+	}
+
+	return (sqr);
+}
+
 
 /**
  * main - Entry point of program.
@@ -14,7 +36,7 @@ int main(void)
 {
 	unsigned long num = 612852475143;
 	unsigned long largest_prime = 0;
-	unsigned long numSqrt = sqrtl(num);
+	unsigned long numSqrt = sqroot(num);
 	unsigned long i = 2;
 
 	while (i <= numSqrt)
