@@ -19,13 +19,12 @@ void rev_string(char *s)
 
 	rev_len = rev_len - 1;
 
-	for (len = 0; len <= (rev_len / 2) + 1; len++)
+	for (len = 0; len <= rev_len / 2; len++)
 	{
 
 		tmp = s[len];
-		s[len] = s[rev_len];
-		s[rev_len] = tmp;
+		s[len] = s[rev_len - len];
+		s[rev_len - len] = tmp;
 
-		rev_len--;
 	}
 }
