@@ -22,7 +22,7 @@ int main(void)
 	char pass;
 	int sum = 0;
 
-	srand(time(0));
+	srand(time(NULL));
 
 	while (sum <= 2645)
 	{
