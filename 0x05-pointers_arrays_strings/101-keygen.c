@@ -20,7 +20,6 @@
 int main(void)
 {
 	char pass;
-	int i = 0;
 	int sum = 0;
 
 	srand(time(0));
@@ -30,7 +29,6 @@ int main(void)
 		pass = rand() % 128;
 		sum += pass;
 		putchar(pass);
-		i++;
 	}
 	putchar(2772 - sum);
 
