@@ -25,7 +25,7 @@ int main(void)
 
 	srand(time(0));
 
-	while (sum < 2645)
+	while (sum <= 2645)
 	{
 		pass = rand() % 128;
 		sum += pass;
