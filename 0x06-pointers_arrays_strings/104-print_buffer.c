@@ -60,7 +60,7 @@ void print_ascii(char *b, int start, int end)
 
 void print_buffer(char *b, int size)
 {
-	int start, end, hex, ascii, letter;
+	int start, end;
 
 	if (size > 0)
 	{
