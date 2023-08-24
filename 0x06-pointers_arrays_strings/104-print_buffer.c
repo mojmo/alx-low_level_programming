@@ -43,7 +43,7 @@ void print_ascii(char *b, int start, int end)
 	while (ascii < end)
 	{
 		letter = *(b + ascii + start);
-		if (letter <= 32 && letter >= 126)
+		if (!(letter >= 32 && letter <= 126))
 			letter = '.';
 		printf("%c", letter);
 		ascii++;
