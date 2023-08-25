@@ -43,16 +43,15 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	for (j = 0; n2[j] != '\0'; j++)
 		;
 
-	if ((i > size_r - 1) || (j > size_r - 1))
+	if ((i > size_r - 1) || (j > size_r - 1) || (i + j == size_r))
 		return (0);
 
+	i--;
+	j--;
 	resPtr = 0;
 
-	while ((i >= 0 || j >= 0) && resPtr < size_r - 1)
+	while ((i >= 0 || j >= 0) && (resPtr < size_r - 1))
 	{
-		i--;
-		j--;
-
 		num1 = (i >= 0) ? n1[i] - '0' : 0;
 		num2 = (j >= 0) ? n2[j] - '0' : 0;
 		sum = num1 + num2 + carry;
@@ -60,6 +59,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		carry = sum / 10;
 		r[resPtr] = (sum % 10) + '0';
 
+		i--;
+		j--;
 		resPtr++;
 	}
 
@@ -74,6 +75,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	r[resPtr] = '\0';
 	reverse_number(r, resPtr);
-
 	return (r);
 }
