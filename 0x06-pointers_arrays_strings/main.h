@@ -12,6 +12,8 @@ char *cap_string(char *str);
 char *leet(char *str);
 char *rot13(char *str);
 void print_number(int n);
+char *reverse_number(char *r, int size);
+char *infinite_add(char *n1, char *n2, char *r, int size_r);
 void print_hex(char *b, int start, int end);
 void print_ascii(char *b, int start, int end);
 void print_buffer(char *b, int size);
