@@ -5,7 +5,8 @@
  *
  * @n: the number.
  *
- * Return: the factorial of n.
+ * Return: the factorial of n if n is positive.
+ *		-1 if n is negative.
  */
 
 int factorial(int n)
