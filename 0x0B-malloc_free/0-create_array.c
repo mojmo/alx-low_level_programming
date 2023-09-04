@@ -8,7 +8,7 @@
  * @size: the size of the array.
  * @c: a specific char to fill the array with.
  *
- * Retrun: a pointer to the array, NULL if it fails or size = 0.
+ * Return: a pointer to the array, NULL if it fails or size = 0.
  */
 
 char *create_array(unsigned int size, char c)
