@@ -20,19 +20,30 @@ int **alloc_grid(int width, int height)
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
-	/* allocate space for an array of pointers "rows" */
-	grid = malloc(sizeof(int *) * width);
+	/* allocate space for an array of pointers "columns" */
+	grid = malloc(sizeof(int *) * height);
 
-	/* for each row allocate a number of columns * size of int */
-	for (i = 0; i < width; i++)
-		grid[i] = malloc(sizeof(int) * height);
+	/* for each columns allocate a number of rows * size of int */
+	for (i = 0; i < height; i++)
+		grid[i] = malloc(sizeof(int) * width);
 
 	if (grid == NULL)
-		return (NULL);
-
-	for (i = 0; i < width; i++)
 	{
-		for (j = 0; j < height; j++)
+		return (NULL);
+	}
+
+
+	for (i = 0; i < height; i++)
+	{
+		if (grid[i] == NULL)
+		{
+			for (j = 0; j < i; j++)
+				free(grid[j]);
+
+			free(grid);
+			return (NULL);
+		}
+		for (j = 0; j < width; j++)
 		{
 			grid[i][j] = 0;
 		}
