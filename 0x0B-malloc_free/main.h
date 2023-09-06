@@ -11,5 +11,6 @@ char *argstostr(int ac, char **av);
 char **strtow(char *str);
 int total_len(char *str);
 int words_count(char *str);
+char *delete_spaces(char *str);
 
 #endif
