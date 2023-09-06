@@ -45,7 +45,6 @@ char **strtow(char *str)
 		return (NULL);
 
 	wordsCount = words_count(str);
-
 	if (wordsCount == 0)
 		return (NULL);
 
@@ -58,7 +57,8 @@ char **strtow(char *str)
 		if (str[j] != ' ')
 			len++;
 
-		if ((str[j] != ' ' && str[j + 1] == ' ') || (str[j] != ' ' && str[j + 1] == '\0'))
+		if ((str[j] != ' ' && str[j + 1] == ' ') ||
+		(str[j] != ' ' && str[j + 1] == '\0'))
 		{
 			words[i] = malloc(sizeof(char) * (len + 1));
 			if (words[i] == NULL)
