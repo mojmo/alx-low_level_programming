@@ -14,15 +14,23 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *spc = NULL;
-	unsigned int i;
+	char *ch = NULL;
+	unsigned int i, total;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	spc = malloc(nmemb * size);
+	total = nmemb * size;
+
+	spc = malloc(total);
 
 	if (spc == NULL)
 		return (NULL);
 
-	return(spc);
+	ch = spc;
+
+	for (i = 0; i < total; i++)
+		ch[i] = 0;
+
+	return (spc);
 }
