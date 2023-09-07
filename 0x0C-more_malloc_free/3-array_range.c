@@ -14,8 +14,7 @@
 int *array_range(int min, int max)
 {
 	int *spc = NULL;
-	int i;
-	unsigned int total;
+	unsigned int i, total;
 
 	if (min > max)
 		return (NULL);
