@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	for (i = 0; i < bytes; i++, ptr++)
 	{
 		opcodes = *(unsigned char *)ptr;
-		printf("%.2x", opcodes);
+		printf("%02x", opcodes);
 		if (i != bytes - 1)
 			printf(" ");
 	}
