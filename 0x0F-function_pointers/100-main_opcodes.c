@@ -3,12 +3,12 @@
 
 /**
  * main - Entry point.
- * 
+ *
  * @argc: the number of command line arguments.
  * @argv: the command line arguments.
- * 
+ *
  * Description: a program that prints the opcodes of its own main function.
- * 
+ *
  * Return: Always 0 (success).
  */
 
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	{
 		opcodes = *(unsigned char *)ptr;
 		printf("%.2x", opcodes);
-		if (i != bytes)
+		if (i != bytes - 1)
 			printf(" ");
 	}
 	printf("\n");
