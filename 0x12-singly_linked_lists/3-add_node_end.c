@@ -19,7 +19,7 @@ unsigned int _strlen(char *s)
 }
 
 /**
- * add_node - adds a new node at the beginning of a list_t list.
+ * add_node_end - a function that adds a new node at the end of a list_t list.
  *
  * @head: pointer to the head of the list.
  * @str: a string member of each node.
@@ -27,17 +27,26 @@ unsigned int _strlen(char *s)
  * Return: the address of the new element, or NULL if it failed.
  */
 
-list_t *add_node(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *curr = malloc(sizeof(list_t));
+	list_t *newNode = malloc(sizeof(list_t));
+	list_t *curr = *head;
 
-	if (curr == NULL)
+	if (newNode == NULL)
 		return (NULL);
 
-	curr->str = strdup(str);
-	curr->len = _strlen((char *)str);
-	curr->next = *head;
-	*head = curr;
+	newNode->str = strdup(str);
+	newNode->len = _strlen((char *)str);
+	newNode->next = NULL;
 
-	return (*head);
+	if (curr != NULL)
+	{
+		while (curr->next != NULL)
+			curr = curr->next;
+		curr->next = newNode;
+	}
+	else
+		*head = newNode;
+
+	return (newNode);
 }
