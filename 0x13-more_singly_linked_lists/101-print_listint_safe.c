@@ -14,9 +14,6 @@ size_t print_listint_safe(const listint_t *head)
 	unsigned int  count = 0;
 	long int diff;
 
-	if (!head)
-		exit(98);
-
 	while (currNode != NULL)
 	{
 		/**
