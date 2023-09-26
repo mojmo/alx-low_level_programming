@@ -16,14 +16,13 @@ size_t print_listint_safe(const listint_t *head)
 
 	while (currNode != NULL)
 	{
-		printf("[%p] %d\n", (void *)currNode, currNode->n);
-		count++;
-
 		/**
 		 * If the difference is negative or equal to zero, we are attempting to
 		 * access an address that we have previously visited.
 		 */
 		diff = currNode - currNode->next;
+		printf("[%p] %d\n", (void *)currNode, currNode->n);
+		count++;
 
 		if (diff > 0)
 			currNode = currNode->next;
