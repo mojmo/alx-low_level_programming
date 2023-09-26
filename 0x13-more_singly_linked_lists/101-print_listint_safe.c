@@ -14,7 +14,7 @@ size_t print_listint_safe(const listint_t *head)
 	unsigned int  count = 0;
 	long int diff;
 
-	while (currNode != NULL)
+	while (currNode)
 	{
 		/**
 		 * If the difference is negative or equal to zero, we are attempting to
