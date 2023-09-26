@@ -10,25 +10,26 @@
 
 size_t print_listint_safe(const listint_t *head)
 {
+	listint_t *currNode = (listint_t *)head;
 	unsigned int  count = 0;
 	long int diff;
 
-	while (head != NULL)
+	while (currNode != NULL)
 	{
 		/**
 		 * If the difference is negative or equal to zero, we are attempting to
 		 * access an address that we have previously visited.
 		 */
-		diff = head - head->next;
+		diff = currNode - currNode->next;
+		printf("[%p] %d\n", (void *)currNode, currNode->n);
 		count++;
-		printf("[%p] %d\n", (void *)head, head->n);
 
 		if (diff > 0)
-			head = head->next;
+			currNode = currNode->next;
 		else
 		{
-			printf("-> [%p] %d\n", (void *)head->next, head->next->n);
-			break;
+			printf("-> [%p] %d\n", (void *)currNode->next, currNode->next->n);
+			exit(98);
 		}
 	}
 
