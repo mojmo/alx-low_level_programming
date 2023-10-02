@@ -27,7 +27,8 @@ int cp(const char *file_from, const char *file_to)
 	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, PERMS);
 	if (fd_to == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to), close(fd_from), exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		close(fd_from), exit(99);
 	}
 	while ((rd = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
@@ -35,18 +36,14 @@ int cp(const char *file_from, const char *file_to)
 		if (wr != rd || wr == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			close(fd_from);
-			close(fd_to);
-			exit(99);
+			close(fd_from), close(fd_to), exit(99);
 		}
 	}
 
 	if (rd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		close(fd_from);
-		close(fd_to);
-		exit(98);
+		close(fd_from), close(fd_to), exit(98);
 	}
 
 	if (close(fd_from) == -1 || close(fd_to) == -1)
