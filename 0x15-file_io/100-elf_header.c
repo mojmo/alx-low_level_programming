@@ -65,7 +65,7 @@ void print_class(unsigned char *e_ident)
 			printf("ELF64\n");
 			break;
 		default:
-			printf("unknown: %x\n", e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 			break;
 	}
 }
@@ -93,7 +93,7 @@ void print_data(unsigned char *e_ident)
 			printf("2's complement, big endian\n");
 			break;
 		default:
-			printf("unknown: %x\n", e_ident[EI_DATA]);
+			printf("<unknown: %x>\n", e_ident[EI_DATA]);
 			break;
 	}
 }
@@ -159,17 +159,14 @@ void print_os_abi(unsigned char *e_ident)
 		case ELFOSABI_TRU64:
 			printf("UNIX - TRU64\n");
 			break;
-		case ELFOSABI_OPENBSD:
-			printf("UNIX - OpenBSD");
-			break;
-		case ELFOSABI_STANDALONE:
-			printf("Standalone App\n");
-			break;
 		case ELFOSABI_ARM:
 			printf("ARM\n");
 			break;
+		case ELFOSABI_STANDALONE:
+			printf("Stand-alone App\n");
+			break;	
 		default:
-			printf("unknown: %x\n", e_ident[EI_OSABI]);
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
 
@@ -218,7 +215,7 @@ void print_type(unsigned char *e_ident, uint16_t e_type)
 			printf("CORE (Core file)\n");
 			break;
 		default:
-			printf("unknown: %x\n", e_type);
+			printf("<unknown: %x>\n", e_type);
 	}
 }
 
