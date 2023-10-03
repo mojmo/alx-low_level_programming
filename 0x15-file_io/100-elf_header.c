@@ -292,4 +292,4 @@ int main(int argc, char **argv)
 	free(hdr);
 	close(fd);
 	return (0);
-}	
+}
