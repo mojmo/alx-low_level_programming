@@ -258,7 +258,7 @@ int main(int argc, char *argv[])
 	int fd, rd;
 	Elf64_Ehdr *hdr;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(98);
