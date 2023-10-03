@@ -188,10 +188,11 @@ void print_abi_version(unsigned char *e_ident)
 
 void print_type(unsigned char *e_ident, uint16_t e_type)
 {
-	printf("  Type:                              ");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
+
+	printf("  Type:                              ");
 
 	switch (e_type)
 	{
@@ -254,8 +255,7 @@ void print_entryPoint_address(unsigned char *e_ident, uint64_t e_entry)
 
 int main(int argc, char **argv)
 {
-	int fd;
-	ssize_t rd;
+	int fd, rd;
 	Elf64_Ehdr *hdr;
 
 	if (argc != 2)
@@ -272,8 +272,8 @@ int main(int argc, char **argv)
 	if (hdr == NULL)
 		dprintf(STDERR_FILENO, "Can not read %s\n", argv[1]), close(fd), exit(98);
 
-	rd = read(fd, hdr, sizeof(hdr));
-	if (rd != sizeof(hdr) || rd == -1)
+	rd = read(fd, hdr, sizeof(Elf64_Ehdr));
+	if (rd != sizeof(Elf64_Ehdr) || rd == -1)
 	{
 		dprintf(STDOUT_FILENO, "Can not read %s\n", argv[1]);
 		free(hdr), close(fd), exit(98);
@@ -292,4 +292,4 @@ int main(int argc, char **argv)
 	free(hdr);
 	close(fd);
 	return (0);
-}
+}	
