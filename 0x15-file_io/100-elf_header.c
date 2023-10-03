@@ -8,7 +8,7 @@
  * @argv: arguments of the command line.
  */
 
-void elf_check(unsigned char *e_ident, char **argv)
+void elf_check(unsigned char *e_ident, char *argv[])
 {
 	if (e_ident[EI_MAG0] != 0x7f ||
 			e_ident[EI_MAG1] != 'E' ||
@@ -253,7 +253,7 @@ void print_entryPoint_address(unsigned char *e_ident, uint64_t e_entry)
  * Return: 0 on success.
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	int fd, rd;
 	Elf64_Ehdr *hdr;
