@@ -1,5 +1,5 @@
 #include "main.h"
-#include "elf.h"
+#include <elf.h>
 
 /**
  * elf_check - checks if the file is elf or not.
@@ -186,7 +186,7 @@ void print_abi_version(unsigned char *e_ident)
  * @e_type: identifies the object file type.
  */
 
-void print_type(unsigned char *e_ident, Elf64_Half e_type)
+void print_type(unsigned char *e_ident, uint16_t e_type)
 {
 	printf("  Type:                              ");
 
@@ -223,7 +223,7 @@ void print_type(unsigned char *e_ident, Elf64_Half e_type)
  * thus starting the process.
  */
 
-void print_entryPoint_address(unsigned char *e_ident, Elf64_Addr e_entry)
+void print_entryPoint_address(unsigned char *e_ident, uint64_t e_entry)
 {
 	printf("  Entry point address:               ");
 
