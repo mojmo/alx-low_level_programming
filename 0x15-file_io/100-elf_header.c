@@ -290,6 +290,7 @@ int main(int argc, char *argv[])
 	print_type(hdr->e_ident, hdr->e_type);
 	print_entryPoint_address(hdr->e_ident, hdr->e_entry);
 	free(hdr);
-	close(fd);
+	if (close(fd) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd), exit(100);
 	return (0);
 }
