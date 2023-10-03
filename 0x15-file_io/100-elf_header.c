@@ -273,7 +273,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Can not read %s\n", argv[1]), close(fd), exit(98);
 
 	rd = read(fd, hdr, sizeof(Elf64_Ehdr));
-	if (rd != sizeof(Elf64_Ehdr) || rd == -1)
+	if (rd == -1)
 	{
 		dprintf(STDOUT_FILENO, "Can not read %s\n", argv[1]);
 		free(hdr), close(fd), exit(98);
