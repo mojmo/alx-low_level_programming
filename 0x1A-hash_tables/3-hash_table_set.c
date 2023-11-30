@@ -7,29 +7,49 @@
  * @key: The key to be added or updated.
  * @value: The value associated with the key.
  *
+ * Description:
+ * This function adds an element to a hash table or updates the value of
+ * an existing key. It computes the index for the key using the key_index
+ * function, and then traverses the linked list at that index to check
+ * for collisions.If the key already exists, the value is updated; otherwise,
+ * a new key-value pair is added. Memory is allocated for a new hash node
+ * when necessary.
+ *
  * Return: 1 on success, 0 on failure.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index = key_index((const unsigned char *)key, ht->size);
-	hash_node_t *new_pair = (hash_node_t *)malloc(sizeof(hash_node_t));
+	unsigned long int index;
+	hash_node_t *new_pair, *tmp;
 
+	if (!ht || !key || !*key || !value)
+		return (0);
+
+	index = key_index((const unsigned char *)key, ht->size);
+	tmp = ht->array[index];
+
+	while (tmp)
+	{
+		if (strcmp(key, tmp->key) == 0)
+		{
+			free(tmp->value);
+			tmp->value = strdup(value);
+			if (!tmp->value)
+				return (0);
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+
+	new_pair = (hash_node_t *)malloc(sizeof(hash_node_t));
 	if (!new_pair)
 		return (0);
 
 	strncpy(new_pair->key, key, strlen(new_pair->key));
 	strncpy(new_pair->value, value, strlen(new_pair->value));
 
-	/* Check for collision */
-	if (ht->array[index] == NULL)
-	{
-		ht->array[index] = new_pair;
-	}
-	else
-	{
-		new_pair->next = ht->array[index];
-		ht->array[index] = new_pair;
-	}
+	new_pair->next = ht->array[index];
+	ht->array[index] = new_pair;
 
 	return (1);
 }
