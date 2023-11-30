@@ -45,8 +45,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!new_pair)
 		return (0);
 
-	strncpy(new_pair->key, key, strlen(new_pair->key));
-	strncpy(new_pair->value, value, strlen(new_pair->value));
+	new_pair->key = strdup(key);
+	new_pair->value = strdup(value);
+
+	if (!new_pair->key || !new_pair->value)
+	{
+		free(new_pair);
+		return (0);
+	}
 
 	new_pair->next = ht->array[index];
 	ht->array[index] = new_pair;
