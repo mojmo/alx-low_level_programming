@@ -2,23 +2,6 @@
 #include "search_algos.h"
 
 /**
- * min - returns the minimum of two size_t values
- * @a: first size_t value
- * @b: second size_t value
- *
- * This function compares two size_t values and returns the smaller one.
- *
- * Return: The smaller of the two size_t values.
- */
-size_t min(size_t a, size_t b)
-{
-	if (b > a)
-		return (a);
-	else
-		return (b);
-}
-
-/**
  * jump_search - searches for a value in a sorted array using
  * jump search algorithm
  * @array: pointer to the first element of the sorted array
@@ -37,40 +20,35 @@ size_t min(size_t a, size_t b)
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t slow = 0, fast = sqrt(size);
+	size_t step = sqrt(size);
+	size_t i;
+	size_t slow = 0;
+	size_t fast = step;
 
 	if (array == NULL)
 		return (-1);
 
+	printf("Value checked array[%lu] = [%d]\n", slow, array[slow]);
 	/* Perform jump search */
-	while (array[(min(fast, size)) - 1] < value)
+	while (fast < size && array[fast] < value)
 	{
+		printf("Value checked array[%lu] = [%d]\n", fast, array[fast]);
 		slow = fast;
-		fast += sqrt(size);
-
-		/**
-		* If the slow pointer exceeds the size of the array,
-		* return -1 (value not found)
-		 */
-		if (slow >= size)
-			return (-1);
+		fast += step;
 	}
 
-	/* Perform linear search within the block where the value might be located */
-	while (array[slow] < value)
+	printf("Value found between indexes [%lu] and [%lu]\n", slow, fast);
+
+	/* Adjust fast pointer if it goes beyond the array */
+	fast = fast < size ? fast : size - 1;
+
+	/* Linear search within the identified range */
+	for (i = slow; i <= fast; i++)
 	{
-		slow += 1;
-
-		/**
-		* If the slow pointer reaches the end of the block,
-		* return -1 (value not found)
-		 */
-		if (slow == min(fast, size))
-			return (-1);
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+		if (array[i] == value)
+			return (i);
 	}
-
-	if (array[slow] == value)
-		return (slow);
 
 	return (-1);
 }
