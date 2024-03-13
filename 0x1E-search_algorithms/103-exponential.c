@@ -90,6 +90,6 @@ int exponential_search(int *array, size_t size, int value)
 	printf("Value found between indexes");
 	printf(" [%lu] and [%lu]\n", i / 2, min(i + 1, size) - 1);
 
-	return (binary_search_recursive(array, i / 2, min(i + 1, size), value));
+	return (binary_search_recursive(array, i / 2, min(i + 1, size) - 1, value));
 }
 
